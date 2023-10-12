@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  challenge_app:
+    image: challenge:latest
+    ports:
+          - "8080:8080"

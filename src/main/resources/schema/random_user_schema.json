@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/ResultsRandomUser",
+  "definitions": {
+    "ResultsRandomUser": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RandomUser"
+          }
+        },
+        "info": {
+          "$ref": "#/definitions/Info"
+        }
+      },
+      "required": [
+        "info",
+        "results"
+      ],
+      "title": "ResultsRandomUser"
+    },
+    "Info": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seed": {
+          "type": "string"
+        },
+        "results": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "page",
+        "results",
+        "seed",
+        "version"
+      ],
+      "title": "Info"
+    },
+    "RandomUser": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gender": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "email": {
+          "type": "string"
+        },
+        "picture": {
+          "$ref": "#/definitions/Picture"
+        }
+      },
+      "required": [
+        "email",
+        "gender",
+        "name",
+        "picture"
+      ],
+      "title": "RandomUser"
+    },
+    "Name": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "first": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first",
+        "last",
+        "title"
+      ],
+      "title": "Name"
+    },
+    "Picture": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "large": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        },
+        "medium": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        },
+        "thumbnail": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        }
+      },
+      "required": [
+        "large",
+        "medium",
+        "thumbnail"
+      ],
+      "title": "Picture"
+    }
+  }
+}
