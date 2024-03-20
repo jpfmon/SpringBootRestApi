@@ -96,10 +96,16 @@ public class UserService {
     public void deleteUserById(String username) {
         if (isUserAlreadySaved(username)) {
             userRepository.deleteById(username);
+            LOGGER.info("Deleting user: {}", username);
             usernamesCacheImpl.removeUsernameFromCache(username);
         } else {
             throw new IllegalArgumentException("Username not in database, nothing was deleted.");
         }
+    }
+
+    public void deleteAllUsers() {
+        LOGGER.info("Deleting all users in db");
+        userRepository.deleteAll();
     }
 
     public List<UserDTO> saveRandomUsers(List<RandomUser> randomUserList) {

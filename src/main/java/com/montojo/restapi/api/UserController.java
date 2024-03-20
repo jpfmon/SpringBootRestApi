@@ -111,6 +111,17 @@ public class UserController {
         userService.deleteUserById(userName);
     }
 
+    @DeleteMapping("")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete all users from db", description = "Deletes all users from db")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Users sucessfully deleted")
+    })
+    public void deleteAllUsers() {
+        LOGGER.info("Delegating to delete all users");
+        userService.deleteAllUsers();
+    }
+
     @GetMapping("/generate/{number}/")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDTO> generateUsers(@Valid @PathVariable(name = "number", required = true) Integer number) {
