@@ -1,7 +1,26 @@
 version: '3.7'
 
 services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=users
+    ports:
+      - "3308:3306"
+    volumes:
+      - pgdata:/var/lib/postgreselecs/data
+
   challenge_app:
     image: challenge:latest
+    depends_on:
+      - db
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/users
+      - DB_USERNAME=admin
+      - DB_PASSWORD=admin1234
     ports:
-          - "8080:8080"
+          - "8081:8080"
+volumes:
+  pgdata:
