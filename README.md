@@ -7,13 +7,14 @@ Comments to the implementation
 At this stage has been already implemented:
 
 - Required endpoints:
-    * */api/users/ (GET)*: return the list of all users.
-    * */api/users/{username}/ (GET)*: return a single user.
-    * */api/users/ (POST)*: create a user.
-    * */api/users/{username}/ (PUT)*: update the information of a single user.
-    * */api/users/{username}/ (DELETE)*: delete a single user.
-    * */api/users/generate/{number}/ (GET)*: generates a number, provided as a parameter, of random users using https://randomuser.me[Random User Generator] service, and saves those users into the H2 db.
-    * */api/users/tree/ (GET)*: *not yet implemented as planned*.
+    * */api/users (GET)*: return the list of all users.
+    * */api/users (POST)*: create a user.
+    * */api/users/ (DELETE)*: delete all users.
+    * */api/users/{username} (GET)*: return a single user.
+    * */api/users/{username} (PUT)*: update the information of a single user.
+    * */api/users/{username} (DELETE)*: delete a single user.
+    * */api/users/generate/{number} (GET)*: generates a number, provided as a parameter, of random users using https://randomuser.me[Random User Generator] service, and saves those users into the H2 db.
+    * */api/users/tree (GET)*: *not yet implemented as planned*.
 
 - H2 in memory database:
     * data.sql and schema.sql are provided in resources folder for schema initialization and for sample data saving.

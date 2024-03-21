@@ -44,7 +44,7 @@ public class UserControllerTest {
     public void getAllEmployees_getsAll() throws Exception {
         when(userService.getAllUsers()).thenReturn(LIST_USERDTOS);
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders
-                        .get("/api/users/")
+                        .get("/api/users")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -62,7 +62,7 @@ public class UserControllerTest {
         UserDTO userDTO = LIST_USERDTOS.get(0);
         when(userService.saveUser(userDTO)).thenReturn(userDTO);
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders
-                        .post("/api/users/")
+                        .post("/api/users")
                         .content(objectMapper.writeValueAsString(userDTO))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -81,7 +81,7 @@ public class UserControllerTest {
         UserDTO userDTO = LIST_USERDTOS.get(0);
         doNothing().when(userService).deleteUserById(userDTO.getUserName());
         mvc.perform(MockMvcRequestBuilders
-                        .delete(String.format("/api/users/%s/", userDTO.getUserName()))
+                        .delete(String.format("/api/users/%s", userDTO.getUserName()))
                 )
                 .andExpect(status().isOk());
     }
@@ -93,7 +93,7 @@ public class UserControllerTest {
                 .when(userService)
                 .deleteUserById(userDTO.getUserName());
         mvc.perform(MockMvcRequestBuilders
-                        .delete(String.format("/api/users/%s/", userDTO.getUserName()))
+                        .delete(String.format("/api/users/%s", userDTO.getUserName()))
                 )
                 .andExpect(status().is4xxClientError());
     }

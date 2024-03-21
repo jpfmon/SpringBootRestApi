@@ -5,7 +5,6 @@ import com.montojo.restapi.mapper.impl.UserMapperImpl;
 import com.montojo.restapi.model.User;
 import com.montojo.restapi.repository.UserRepository;
 import com.montojo.restapi.repository.impl.UsernamesCacheImpl;
-import com.montojo.restapi.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

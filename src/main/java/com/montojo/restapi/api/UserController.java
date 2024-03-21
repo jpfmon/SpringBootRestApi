@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/api/users/")
+@RequestMapping("/api/users")
 @Tag(name = "User Controller")
 public class UserController {
 
@@ -49,7 +49,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("{username}/")
+    @GetMapping("/{username}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get user by username", description = "Retrieves single user by unique username", parameters = {@Parameter(name = "username", required = true, in = ParameterIn.PATH)})
     @ApiResponses(value = {
@@ -92,14 +92,14 @@ public class UserController {
         return userService.saveUser(userDTO);
     }
 
-    @PutMapping(value = "{username}/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public UserDTO updateUser(@PathVariable(name = "username", required = true) String userName, @Valid @RequestBody(required = true) UserDTO userDTO) {
         LOGGER.info("Delegating to update user: {}.", userDTO);
         return userService.updateUser(userName, userDTO);
     }
 
-    @DeleteMapping("{username}/")
+    @DeleteMapping("/{username}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Delete user from db", description = "Tries to delete an user from db by id", parameters = {})
     @ApiResponses(value = {
@@ -122,7 +122,7 @@ public class UserController {
         userService.deleteAllUsers();
     }
 
-    @GetMapping("/generate/{number}/")
+    @GetMapping("/generate/{number}")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDTO> generateUsers(@Valid @PathVariable(name = "number", required = true) Integer number) {
         LOGGER.info("Delegating to generate {} number of users.", number);
