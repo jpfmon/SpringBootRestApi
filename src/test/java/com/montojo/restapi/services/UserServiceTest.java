@@ -18,8 +18,7 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -89,5 +88,14 @@ public class UserServiceTest {
 
 
         assertThrows(IllegalArgumentException.class, () -> userService.saveUser(userDTO));
+    }
+
+    @Test
+    public void deleteUserById_deletesSuccessfully() {
+        UserDTO userDTO = userDTOList.get(0);
+
+
+        assertThrows(IllegalArgumentException.class, () -> userService.deleteUserById(userDTO.getUserName()));
+
     }
 }
